@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form id="investorForm">
+        <input id="name" type="text" placeholder="Name">
+        <input id="imgurl" type="text" placeholder="Image URL">
+        <input id="logo" type="text" placeholder="Company Logo">
+        <input id="role" type="text" placeholder="Role">
+        <input type="submit" value="submit">
+
+    </form>
+
+
+
+</body>
+
+</html>
+
+<script>
+
+    document.querySelector("form").addEventListener("submit",func)
+
+
+    var objArr = JSON.parse(localStorage.getItem("data")) || []
+
+    function func(){
+        event.preventDefault()
+
+
+        // var name = investorForm.name.value
+        // var imageurl = investorForm.imgurl.value
+        // var logo = investorForm.logo.value
+        // var role = investorForm.role.value
+
+        var obj = {
+            name : investorForm.name.value,
+            imageurl : investorForm.imgurl.value,
+            logo : investorForm.logo.value,
+            role: investorForm.role.value
+        }
+
+        // console.log(obj)
+        objArr.push(obj)
+        console.log(objArr)
+
+        localStorage.setItem("data",JSON.stringify(objArr))
+
+
+
+    }
+
+
+
+</script>

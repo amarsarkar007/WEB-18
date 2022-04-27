@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(4,auto);
+            gap: 20px;
+        }
+
+        div>img:nth-child(1)
+        {
+            width: 100%;
+        }
+
+        p+img{
+            width: 50%;
+            display: block;
+            margin: auto;
+        }
+
+        img+p{
+            text-align: center;
+            font-size: 24px;
+        }
+
+        p+p{
+            text-align: center;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    objArr = JSON.parse(localStorage.getItem("data"))
+
+    var div = document.createElement("div")
+    div.setAttribute("id","container")
+
+    objArr.forEach(function(ele){
+        var box = document.createElement("div")
+        var name = document.createElement("p")
+        name.innerText = ele.name
+        var img = document.createElement("img")
+        img.setAttribute("src",ele.imageurl)
+        var logo = document.createElement("img")
+        logo.setAttribute("src",ele.logo)
+        var role = document.createElement("p")
+        role.innerText=ele.role
+
+        box.append(img, name, role, logo)
+
+        div.append(box)
+        document.querySelector("body").append(div)
+
+    })
+
+
+</script>
